@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+message: "If you use this research code, please cite the project and paper."
+title: "Green-Light Security for AI Computing"
+type: software
+authors:
+  - family-names: Zhang
+    given-names: Gianna
+repository-code: "https://github.com/gzhangg/green-light-security"
+url: "https://gzhangg.github.io/green-light.html"
