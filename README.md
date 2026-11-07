@@ -83,3 +83,9 @@ green-light-security/
 ├── raspberry-pi/
 ├── hardware/
 └── results/
+
+## Acknowledgment
+
+This research was conducted under the guidance of
+[Professor Kanad Basu](https://faculty.rpi.edu/kanad-basu)
+at Rensselaer Polytechnic Institute (RPI).
