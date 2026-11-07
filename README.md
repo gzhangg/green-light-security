@@ -5,31 +5,34 @@
 [Research page](https://gzhangg.github.io/green-light.html) ·
 [Paper](paper/Green_Light_Security_for_AI_Computing.pdf)
 
-Green-Light Security explores how protection mechanisms can be reorganized
-so that computing systems do not pay the full cost of expensive protection
-on every operation.
+Green-Light Security explores how protection mechanisms can be reorganized so
+that computing systems do not pay the full cost of expensive protection on
+every operation.
 
-The central idea is simple:
+The central design principle is:
 
-> Keep lightweight protection continuously on the common path, while
-> invoking expensive corrective work only when it is actually needed.
+> **Keep lightweight protection continuously on the common path, while invoking
+> expensive corrective work only when it is actually needed.**
 
-The project combines mathematical modeling, simulation, optimization, and
-a Raspberry Pi 5 / ESP32 hardware prototype.
+The project combines mathematical modeling, simulation, optimization, and a
+Raspberry Pi 5 / ESP32 hardware prototype.
 
 ---
 
 ## Motivation
 
-AI systems move enormous volumes of data, making memory bandwidth,
-capacity, and energy first-order system constraints.
+AI systems move enormous volumes of data, making memory bandwidth, capacity,
+energy, and latency first-order system constraints.
 
-Traditional protection mechanisms impose recurring overhead on every
-memory access. Green-Light Security asks whether reliability and integrity
-can instead be organized according to how frequently their work is needed.
+Traditional protection mechanisms can impose recurring overhead on every memory
+access, even when faults are rare. Green-Light Security asks whether reliability
+and integrity can instead be organized according to how frequently their work
+is actually needed.
 
-The proposed architecture keeps integrity verification on the fast path
-while moving expensive reliability correction to an off-path tier.
+The proposed architecture keeps lightweight integrity verification on the fast
+path while moving expensive reliability correction to an off-path tier. Normal
+operations remain on the common path; stronger correction is invoked only when
+verification indicates that it is needed.
 
 ---
 
@@ -49,23 +52,26 @@ The analytical framework studies the interaction among:
 - effective throughput
 
 The model identifies operating regions in which strong protection can be
-maintained without allowing correction work to throttle the common path.
+maintained without allowing rare correction work to throttle the common path.
 
 ### 2. Simulation and optimization
 
-The simulation explores how the preferred protection granularity changes
-with reliability conditions, decoder capability, and off-path bandwidth.
+The simulation explores how the preferred protection granularity changes with
+reliability conditions, decoder capability, and off-path bandwidth.
+
+These experiments evaluate the tradeoff between steady protection overhead and
+the cost of invoking stronger correction when faults occur.
 
 ### 3. Hardware prototype
 
-A Raspberry Pi 5 represents the fast tier and executes the experiment under
-Linux using Python.
+A Raspberry Pi 5 represents the fast tier and runs the experiment under Linux
+using Python.
 
-An ESP32 provides a physically separate external path used to emulate the
+An ESP32 provides a physically separate external path used to emulate the added
 latency of reaching an off-path reliability resource.
 
-The prototype is an architectural emulation rather than a production HBM
-or hardware-ECC implementation.
+The prototype is an architectural emulation rather than a production HBM or
+hardware-ECC implementation.
 
 See [`hardware/`](hardware/) for details.
 
@@ -83,6 +89,9 @@ green-light-security/
 ├── raspberry-pi/
 ├── hardware/
 └── results/
+```
+
+---
 
 ## Acknowledgment
 
